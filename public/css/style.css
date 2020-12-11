@@ -26,3 +26,9 @@ p,li{
 .pageNotFOund{
     width: 100%;
 }
+
+.userInfos{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
