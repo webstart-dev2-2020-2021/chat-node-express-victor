@@ -1,6 +1,4 @@
 const express = require("express");
-const { APP_PORT } = process.env
-console.log(APP_PORT)
 //const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const urlencoderParser = bodyParser.urlencoded({extended : false});
@@ -29,7 +27,7 @@ let userInfos = {
 let message = {};
 let oldInput = {};
 let action;
-const port = 3000
+const port = 4170
 //app.use(helmet());
 app.use(flash());
 app.use(express.static('public'));
