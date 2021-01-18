@@ -1,4 +1,6 @@
 const express = require("express");
+const { APP_PORT } = process.env
+console.log(APP_PORT)
 //const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const urlencoderParser = bodyParser.urlencoded({extended : false});
@@ -10,7 +12,7 @@ const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 
 //const { emailRegex, usernameRegex, passwordRegex } = require('./helpers/regex.js');
-const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const usernameRegex = /^\w{6,20}$/;
 const passwordRegex = /^\w{6,20}$/;
 const app = express();
@@ -27,11 +29,11 @@ let userInfos = {
 let message = {};
 let oldInput = {};
 let action;
+const port = 3000
 //app.use(helmet());
 app.use(flash());
 app.use(express.static('public'));
 app.set('view engine', './views');
-const port = 3000;
 app.listen(port, () => console.log(`Serveur lancée sur le port ${port}`))
 
 app.use(
@@ -235,7 +237,7 @@ app.post('/update', urlencoderParser, async (req, res) =>{
         if(!password.match(passwordRegex)){
             console.log('password invalide ->', password)
             message = {
-                message : 'Votre not de passe doit contenir au moins 6 à 20 caractères !'
+                message : 'Votre mot de passe doit contenir au moins 6 à 20 caractères !'
             }
             return res.status(400).redirect('/edit')
         }
