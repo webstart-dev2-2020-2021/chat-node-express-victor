@@ -1,10 +1,17 @@
 module.exports = {
   apps: [{
-    script: "app.js",
-    watch: ["server", "client"],
-    ignore_watch : ["node_modules", "migrations", "models", "database.sqlite.3"],
-    watch_options: {
-      "followSymlinks": false
-    }
+    name        : "user-migration",
+    script      : "./migrations/",
+    watch       : false,
+  },
+  {
+    name        : "sqlite",
+    script      : "./database.sqlite3",
+    watch       : false,
+  },
+  {
+    name        : "user-model",
+    script      : "./models/user.js",
+    watch       : false,
   }]
 };
