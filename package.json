@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app --ignore database.sqlite3",
+    "dev": "APP_PORT=4171 nodemon app --ignore database.sqlite3",
     "prod": "pm2 start app.js --watch --name chat "
   },
   "author": "",
