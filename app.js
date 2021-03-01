@@ -14,6 +14,7 @@ const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+")
 const usernameRegex = /^\w{6,20}$/;
 const passwordRegex = /^\w{6,20}$/;
 const app = express();
+const http = require('http').createServer(app)
 /*
 let userInfos = {
     id : '',
@@ -27,7 +28,7 @@ let userInfos = {
 let message = {};
 let oldInput = {};
 let action;
-const port = 4170
+const port = process.env.APP_PORT
 //app.use(helmet());
 app.use(flash());
 app.use(express.static('public'));
@@ -77,9 +78,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/chat', (req, res) => {
-    if(!req.user){
-        return res.redirect('/')
-    }
+    // if(!req.user){
+    //     return res.redirect('/')
+    // }
     const user = req.user
     const success = req.flash().success || [];
     res.status(200).render('chat.ejs', {success})
@@ -376,6 +377,6 @@ app.get('/admin/delete/:userID', async (req, res) =>{
     res.status(200).redirect('/admin')
 })
 
-app.get('*', (req, res) => {
+http.get('*', (req, res) => {
     res.status(404).render('404.ejs')
 })
