@@ -29,7 +29,7 @@ let userInfos = {
 let message = {};
 let oldInput = {};
 let action;
-const port = process.env.APP_PORT
+const port = 4170
 //app.use(helmet());
 app.use(flash());
 app.use(express.static('public'));
