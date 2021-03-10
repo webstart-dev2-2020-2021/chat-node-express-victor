@@ -8,6 +8,7 @@ const flash = require('connect-flash')
 const passport =  require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
+const io = require('socket.io')(http);
 
 //const { emailRegex, usernameRegex, passwordRegex } = require('./helpers/regex.js');
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
