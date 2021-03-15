@@ -16,16 +16,6 @@ const usernameRegex = /^\w{6,20}$/;
 const passwordRegex = /^\w{6,20}$/;
 const app = express();
 const http = require('http').createServer(app)
-/*
-let userInfos = {
-    id : '',
-    username : '',
-    email : '',
-    password : '',
-    isAdmin : '',
-};
-*/
-
 let message = {};
 let oldInput = {};
 let action;
